@@ -31,6 +31,7 @@ class UpdateProjectRequest extends FormRequest
                 Rule::unique('projects')->ignore($this->project->id),
                 'max:255'
             ],
+            'type_id' => 'nullable|exists:types,id',
             'cover_image' => 'nullable|max:512',
             'team' => 'nullable|max:255',
             'duration' => 'nullable|max:255',

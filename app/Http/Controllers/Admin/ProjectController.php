@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -29,7 +30,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -43,9 +46,9 @@ class ProjectController extends Controller
 
         $val_data = $request->validated();
 
-        $img_path = Storage::disk('public')->put('uploads', $request->cover_image);
+        // $img_path = Storage::disk('public')->put('uploads', $request->cover_image);
 
-        $val_data['cover_image'] = $img_path;
+        // $val_data['cover_image'] = $img_path;
         // dd($img_path);
 
         $slug_title = Project::generate_slug($val_data['title']);
@@ -76,7 +79,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**

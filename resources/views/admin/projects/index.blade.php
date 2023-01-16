@@ -24,6 +24,7 @@
                         <th scope="col">Actions</th>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Team</th>
                         <th scope="col">Duration</th>
                         <th scope="col">Description</th>
@@ -42,6 +43,7 @@
                         </td>
                         <td>{{$project->id}}</td>
                         <td>{{$project->title}}</td>
+                        <td>{{$project->type ? $project->type->name : 'Untyped'}}</td>
                         <td>{{$project->team}}</td>
                         <td>{{$project->duration}}</td>
                         <td>{{$project->description}}</td>

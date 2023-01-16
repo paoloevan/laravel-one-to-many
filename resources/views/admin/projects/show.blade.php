@@ -15,6 +15,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Cover</th>
                         <th scope="col">Team</th>
                         <th scope="col">Duration</th>
@@ -26,6 +27,7 @@
                     <tr>
                         <td>{{$project->id}}</td>
                         <td>{{$project->title}}</td>
+                        <td>{{ $project->type ? $project->type->name : 'Untyped'}}</td>
                         <td>
                             <img width="100" src="{{asset('storage/' . $project->cover_image)}}" alt="{{$project->title}}">
                         </td>

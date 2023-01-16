@@ -20,6 +20,19 @@
             <input value="{{old('title', $project->title)}}" type="text" name="title" id="title" class="form-control mb-3  @error('title') is-invalid @enderror" aria-describedby="helpId">
             @error('title')<div class="alert alert-danger">{{ $message }}</div>@enderror
 
+            <div class="mb-3">
+                <label for="type_id" class="form-label">Types</label>
+                <select class="form-select form-select-lg @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
+                    <option selected>Select one</option>
+
+                    @foreach ($types as $type)
+                    <option value="{{$type->id}}" {{ old('type_id') ? 'selected' : '' }}>{{$type->name}}</option>
+                    @endforeach
+
+                </select>
+            </div>
+            @error('type_id')<div class="alert alert-danger" role="alert">{{$message}}</div>@enderror
+
             <label for="cover_image" class="form-label">Image</label>
             <small class="form-text text-muted ms-2">Upload cover image - max 512 Kb</small>
             <input type="file" name="cover_image" id="cover_image" class="form-control mb-3 @error('cover_image') is-invalid @enderror" aria-describedby="helpId">
