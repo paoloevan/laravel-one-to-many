@@ -46,9 +46,9 @@ class ProjectController extends Controller
 
         $val_data = $request->validated();
 
-        // $img_path = Storage::disk('public')->put('uploads', $request->cover_image);
+        $img_path = Storage::disk('public')->put('uploads', $request->cover_image);
 
-        // $val_data['cover_image'] = $img_path;
+        $val_data['cover_image'] = $img_path;
         // dd($img_path);
 
         $slug_title = Project::generate_slug($val_data['title']);
@@ -98,10 +98,10 @@ class ProjectController extends Controller
             Storage::delete($project->cover_image);
         }
 
-        // $img_path = Storage::disk('public')->put('uploads', $val_data['cover_image']);
-        // // dd($img_path);
+        $img_path = Storage::disk('public')->put('uploads', $val_data['cover_image']);
+        // dd($img_path);
 
-        // $val_data['cover_image'] = $img_path;
+        $val_data['cover_image'] = $img_path;
 
         $project->update($val_data);
 
